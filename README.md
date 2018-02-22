@@ -1,5 +1,6 @@
-#resolve-unpkg
-##About
+# resolve-unpkg
+
+## About
 A library that enables you to keep your unpkg links up to date.
 
 ## Usage
@@ -61,7 +62,7 @@ The following options can be configured for the loader:
 
 #### CLI
 
-An optional config JSON file can be set containing all the configurations from the Loader and in addition:
+An optional config JSON file can be set containing *all the configurations from the Loader* and in addition:
 
 | Property         | Type       | Required | Description                              |
 | ---------------- | ---------- | :------: | ---------------------------------------- |
