@@ -1,0 +1,40 @@
+{
+  "name": "resolve-unpkg",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "private": false,
+  "author": {
+    "name": "nachshons",
+    "email": "nachshons@wix.com"
+  },
+  "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "http://repo.dev.wix/artifactory/api/npm/npm-local/"
+  },
+  "scripts": {
+    "start": "haste start",
+    "precommit": "haste lint",
+    "pretest": "haste build",
+    "test": "haste test",
+    "posttest": "haste lint",
+    "release": "haste release"
+  },
+  "haste": {
+    "preset": "yoshi"
+  },
+  "devDependencies": {
+    "@types/chai": "~4.0.0",
+    "@types/mocha": "~2.2.0",
+    "chai": "~4.1.0",
+    "haste-preset-yoshi": "latest",
+    "husky": "~0.14.0",
+    "mock-fs": "^4.4.2",
+    "typescript": "~2.4.0"
+  },
+  "bin": {
+    "resolve-unpkg": "./dist/src/cli.js"
+  }
+}
