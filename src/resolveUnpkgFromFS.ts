@@ -2,7 +2,7 @@ import {createPathIfDoesntExist} from './utils';
 import * as fs from 'fs';
 import {resolveUnpkg} from './resolveUnpkg';
 
-export function resolveUnpkgFromFS({file = 'index.html', dist = '', unpkgPrefix = 'unpkg.com', versionPlaceholder = 'x.x.x', onlyByVersionPlaceholder = false}) {
+export function resolveUnpkgFromFS({file = 'index.html', dist = '', unpkgPrefix, versionPlaceholder, onlyByVersionPlaceholder}: {file?: string, dist?: string, unpkgPrefix?: string, versionPlaceholder?: string, onlyByVersionPlaceholder?: boolean}) {
   dist = dist || file;
 
   createPathIfDoesntExist(dist);

@@ -1,7 +1,7 @@
 import {getPackageDatas, IPackageData} from './getPackageDatas';
 import {findCurrentVersion} from './findCurrentVersion';
 
-export function resolveUnpkg(source: string, {unpkgPrefix, versionPlaceholder, onlyByVersionPlaceholder}): string {
+export function resolveUnpkg(source: string, {unpkgPrefix = 'unpkg.com', versionPlaceholder = 'x.x.x', onlyByVersionPlaceholder = false}): string {
   const matches: IPackageData[] = getPackageDatas({
     source,
     unpkgPrefix,
