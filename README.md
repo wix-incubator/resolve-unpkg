@@ -59,7 +59,6 @@ The following options can be configured for the loader:
 | `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg links (default: `'unpkg.com'`) | Yes | Yes |
 | `versionPlaceholder`| `string`   |   No     | A placeholder that will be replaced if present in place of version number (default: `'x.x.x'`) | Yes | Yes |
 | `onlyByVersionPlaceholder`  | `boolean`   |   No     |  If to ignore set version numbers (default: `false`)     | Yes | Yes |
-
 | `file`    | `string`   |   No     | Path to file to resolve on (default: `'index.html'`) | Yes | No |
 | `dist`    | `string`   |   No     | File to create/replace with result (default: overwrite original) | Yes | No |
 
