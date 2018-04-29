@@ -55,7 +55,7 @@ import scripts from '!resolve-unpkg?versionPlaceholder=a.b.c&onlyByVersionPlaceh
 The following options can be configured for the loader:
 
 | Property         | Type       | Required | Description                              | CLI | Loader |
-| ---------------- | ---------- | :------: | ---------------------------------------- | Yes | Yes |
+| ---------------- | ---------- | :------: | ---------------------------------------- | --- | ------ |
 | `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg links (default: `'unpkg.com'`) | Yes | Yes |
 | `versionPlaceholder`| `string`   |   No     | A placeholder that will be replaced if present in place of version number (default: `'x.x.x'`) | Yes | Yes |
 | `onlyByVersionPlaceholder`  | `boolean`   |   No     |  If to ignore set version numbers (default: `false`)     | Yes | Yes |
