@@ -54,19 +54,13 @@ import scripts from '!resolve-unpkg?versionPlaceholder=a.b.c&onlyByVersionPlaceh
 
 The following options can be configured for the loader:
 
-| Property         | Type       | Required | Description                              |
-| ---------------- | ---------- | :------: | ---------------------------------------- |
-| `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg links (default: `'unpkg.com'`) |
-| `versionPlaceholder`| `string`   |   No     | A placeholder that will be replaced if present in place of version number (default: `'x.x.x'`) |
-| `onlyByVersionPlaceholder`  | `boolean`   |   No     |  If to ignore set version numbers (default: `false`)     |
+| Property         | Type       | Required | Description                              | CLI | Loader |
+| ---------------- | ---------- | :------: | ---------------------------------------- | Yes | Yes |
+| `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg links (default: `'unpkg.com'`) | Yes | Yes |
+| `versionPlaceholder`| `string`   |   No     | A placeholder that will be replaced if present in place of version number (default: `'x.x.x'`) | Yes | Yes |
+| `onlyByVersionPlaceholder`  | `boolean`   |   No     |  If to ignore set version numbers (default: `false`)     | Yes | Yes |
 
-#### CLI
-
-An optional config JSON file can be set containing *all the configurations from the Loader* and in addition:
-
-| Property         | Type       | Required | Description                              |
-| ---------------- | ---------- | :------: | ---------------------------------------- |
-| `file`    | `string`   |   No     | Path to file to resolve on (default: `'index.html'`) |
-| `dist`    | `string`   |   No     | File to create/replace with result (default: overwrite original) |
+| `file`    | `string`   |   No     | Path to file to resolve on (default: `'index.html'`) | Yes | No |
+| `dist`    | `string`   |   No     | File to create/replace with result (default: overwrite original) | Yes | No |
 
 
