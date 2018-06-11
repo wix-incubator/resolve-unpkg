@@ -15,24 +15,21 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "start": "haste start",
-    "precommit": "haste lint",
-    "pretest": "haste build",
-    "test": "haste test",
-    "posttest": "haste lint",
-    "release": "haste release"
-  },
-  "haste": {
-    "preset": "yoshi"
+    "start": "yoshi start",
+    "precommit": "yoshi lint",
+    "pretest": "yoshi build",
+    "test": "yoshi test",
+    "posttest": "yoshi lint",
+    "release": "yoshi release"
   },
   "devDependencies": {
     "@types/chai": "~4.0.0",
     "@types/mocha": "~2.2.0",
     "chai": "~4.1.0",
-    "haste-preset-yoshi": "latest",
     "husky": "~0.14.0",
     "mock-fs": "^4.4.2",
-    "typescript": "~2.4.0"
+    "typescript": "~2.4.0",
+    "yoshi": "^1.2.0"
   },
   "bin": {
     "resolve-unpkg": "./dist/src/cli.js"
