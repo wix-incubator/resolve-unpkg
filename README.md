@@ -1,4 +1,4 @@
-# resolve-unpkg[![Build Status][ci-img]][ci]
+# resolve-unpkg [![Build Status][ci-img]][ci]
 [ci-img]:  https://travis-ci.org/wix/resolve-unpkg.svg
 [ci]:      https://travis-ci.org/wix/resolve-unpkg
 
