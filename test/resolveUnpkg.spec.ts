@@ -2,6 +2,7 @@ import {expect} from 'chai';
 import * as mock from 'mock-fs';
 import {resolveUnpkgFromFS} from '../src/resolveUnpkgFromFS';
 import * as fs from 'fs';
+import * as path from 'path';
 
 describe('FindCurrentVersion', () => {
   const file1Name = 'file1';
@@ -51,44 +52,65 @@ describe('FindCurrentVersion', () => {
   });
 
   it('should not change a file without unpkg', () => {
-    resolveUnpkgFromFS({file: file1Name, unpkgPrefix: 'unpkg'});
+    resolveUnpkgFromFS({files: [file1Name], unpkgPrefix: 'unpkg'});
 
     const result = fs.readFileSync(file1Name, 'utf-8');
     expect(result).to.equal(file1Contents);
   });
 
   it('should support file replacment (without dist)', () => {
-    resolveUnpkgFromFS({file: file2Name, unpkgPrefix: 'unpkg'});
+    resolveUnpkgFromFS({files: [file2Name], unpkgPrefix: 'unpkg', onlyByVersionPlaceholder: false});
 
     const result = fs.readFileSync(file2Name, 'utf-8');
     expect(result).to.equal(file2Contents.replace('{version}', package1Version));
   });
 
-  it('should create file in dist', () => {
-    const dist = 'a/b/c/a.json';
-    resolveUnpkgFromFS({file: file2Name, unpkgPrefix: 'unpkg', dist});
+  it('should replace 2 files (without dist)', () => {
+      resolveUnpkgFromFS({files: [file2Name, file3Name], unpkgPrefix: 'unpkg', onlyByVersionPlaceholder: false});
 
-    const result = fs.readFileSync(dist, 'utf-8');
+      const result1 = fs.readFileSync(file3Name, 'utf-8');
+      expect(result1).to.equal(file2Contents.replace('{version}', package1Version));
+
+      const result2 = fs.readFileSync(file2Name, 'utf-8');
+      expect(result2).to.equal(file2Contents.replace('{version}', package1Version));
+  });
+
+  it('should create file in dist', () => {
+    const dist = 'a/b/c';
+    resolveUnpkgFromFS({files: [file2Name], unpkgPrefix: 'unpkg', dist, onlyByVersionPlaceholder: false});
+
+    const result = fs.readFileSync(path.join(dist, file2Name), 'utf-8');
     expect(result).to.equal(file2Contents.replace('{version}', package1Version));
   });
 
-  it('should create file in dist when given', () => {
-    const dist = 'a/b/c/a.json';
-    resolveUnpkgFromFS({file: file2Name, unpkgPrefix: 'unpkg', dist});
+  it('should create 2 files in dist', () => {
+      const dist = 'a/b/c';
+      resolveUnpkgFromFS({files: [file2Name, file3Name], unpkgPrefix: 'unpkg', dist, onlyByVersionPlaceholder: false});
 
-    const result = fs.readFileSync(dist, 'utf-8');
+      const result1 = fs.readFileSync(path.join(dist, file3Name), 'utf-8');
+      expect(result1).to.equal(file2Contents.replace('{version}', package1Version));
+
+      const result2 = fs.readFileSync(path.join(dist, file2Name), 'utf-8');
+      expect(result2).to.equal(file2Contents.replace('{version}', package1Version));
+  });
+
+  it('should create file in dist when given', () => {
+    const dist = 'a/b/c';
+    resolveUnpkgFromFS({files: [file2Name], unpkgPrefix: 'unpkg', dist, onlyByVersionPlaceholder: false});
+
+    const result = fs.readFileSync(path.join(dist, file2Name), 'utf-8');
     expect(result).to.equal(file2Contents.replace('{version}', package1Version));
   });
 
   it('should handle x.x.x version', () => {
-    resolveUnpkgFromFS({file: file3Name, unpkgPrefix: 'unpkg'});
+    resolveUnpkgFromFS({files: [file3Name], unpkgPrefix: 'unpkg'});
 
     const result = fs.readFileSync(file3Name, 'utf-8');
     expect(result).to.equal(file3Contents.replace('{version}', package1Version));
   });
 
   it('should handle custom (x.y.z) version', () => {
-    resolveUnpkgFromFS({file: file4Name, unpkgPrefix: 'unpkg', versionPlaceholder: file4Version});
+    resolveUnpkgFromFS({files: [file4Name], unpkgPrefix: 'unpkg', versionPlaceholder: file4Version});
 
     const result = fs.readFileSync(file4Name, 'utf-8');
     expect(result).to.equal(file4Contents.replace('{version}', package1Version));
@@ -96,7 +118,7 @@ describe('FindCurrentVersion', () => {
 
   it('should only fix by version placeholder', () => {
     resolveUnpkgFromFS({
-      file: file5Name,
+      files: [file5Name],
       unpkgPrefix: 'unpkg',
       versionPlaceholder: file5Version,
       onlyByVersionPlaceholder: true
