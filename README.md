@@ -1,4 +1,6 @@
 # resolve-unpkg
+[ci-img]:  https://travis-ci.org/wix/resolve-unpkg.svg
+[ci]:      https://travis-ci.org/wix/resolve-unpkg
 
 ## About
 A library that enables you to keep your unpkg links up to date.
