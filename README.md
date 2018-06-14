@@ -68,9 +68,9 @@ The following options can be configured for the loader:
 ### Example config file
 ```
 {
-  unpkgPrefix: '/unpkg',
-  files: ['index.vm', 'index.ejs'],
-  dist: 'dist/'  
+  "unpkgPrefix": "/unpkg",
+  "files": ["index.vm", "index.ejs"],
+  "dist": "dist/"
 }
 ```
 
