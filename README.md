@@ -2,6 +2,10 @@
 [ci-img]:  https://travis-ci.org/wix/resolve-unpkg.svg
 [ci]:      https://travis-ci.org/wix/resolve-unpkg
 
+![image]
+
+[image]:https://static.wixstatic.com/media/7c303e_94effb7f19384cac83fec1b14d10caf4~mv2.jpg/v1/fill/w_150,h_150,al_c,q_80,usm_0.66_1.00_0.01/7c303e_94effb7f19384cac83fec1b14d10caf4~mv2.jpg
+
 ## About
 A library that enables you to keep your unpkg links up to date.
 
