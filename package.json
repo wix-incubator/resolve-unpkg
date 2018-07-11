@@ -20,14 +20,30 @@
     "pretest": "yoshi build",
     "test": "yoshi test",
     "posttest": "yoshi lint",
-    "release": "yoshi release"
+    "semantic-release": "semantic-release"
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/github"
+    ],
+    "prepare": [
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "CHANGELOG.md"
+      },
+      "@semantic-release/git"
+    ]
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^2.1.1",
+    "@semantic-release/git": "^6.0.1",
+    "@semantic-release/github": "^4.4.0",
     "@types/chai": "~4.0.0",
     "@types/mocha": "~2.2.0",
     "chai": "~4.1.0",
     "husky": "~0.14.0",
     "mock-fs": "^4.4.2",
+    "semantic-release": "^15.7.0",
     "typescript": "~2.4.0",
     "yoshi": "^1.2.0"
   },
