@@ -1,13 +1,11 @@
-# resolve-unpkg [![Build Status][ci-img]][ci] [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[ci-img]:  https://travis-ci.org/wix-incubator/resolve-unpkg.svg
-[ci]:      https://travis-ci.org/wix-incubator/resolve-unpkg
+<p align="center">
+    <img src="https://image.ibb.co/nR99Wy/svg_resolveunpkg_github.png"/>
+</p>
 
-![image]
+# resolve-unpkg
+> A library that enables you to keep your unpkg links up to date.
 
-[image]:https://static.wixstatic.com/media/7c303e_94effb7f19384cac83fec1b14d10caf4~mv2.jpg/v1/fill/w_150,h_150,al_c,q_80,usm_0.66_1.00_0.01/7c303e_94effb7f19384cac83fec1b14d10caf4~mv2.jpg
-
-## About
-A library that enables you to keep your unpkg links up to date.
+[![Build Status](https://travis-ci.org/wix-incubator/resolve-unpkg.svg)](https://travis-ci.org/wix-incubator/resolve-unpkg) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Usage
 1. `npm i --save-dev resolve-unpkg`
