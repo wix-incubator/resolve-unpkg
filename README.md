@@ -30,15 +30,15 @@ The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by pa
 
 # Import
 
-To add **Resolve-Unpkg**, in the project root folder run:
+To add **Resolve-Unpkg** to the project, `cd` to the project root folder and run:
 
 `npm i --save-dev resolve-unpkg`
 
-This will add **Resolve-Unpkg** as a dependency to the *package.json* enabling you to run the `resolve-unpkg` command manually and use resolve-unpkg as a webpack loader to resolve versions in URLs on loading.
+This will add **Resolve-Unpkg** as a dependency to *package.json* enabling you to run the `resolve-unpkg` command manually and use resolve-unpkg as a webpack loader to resolve versions in unpkg URLs when they are imported from the JSON file.
 
 # Configuration
 
-By default, Resolve-Unpkg processes URLs with unpkg.com prefix in the *index.html* file and replaces the *x.x.x* version placeholders with the actual version of the packages that are installed in your local environment.
+By default, **Resolve-Unpkg** processes URLs with `unpkg.com` prefix in the *index.html* file and replaces the *x.x.x* version placeholders with the actual version of the packages that are installed in your local environment.
 
 To customize the default configuration, use the following options:
 
@@ -52,27 +52,29 @@ To customize the default configuration, use the following options:
 
 # Usage in CLI
 
-With Resolve-Unpkg, you can automatically update the package versions that are mentioned in the unpkg URLs in your project files, like *index.html*.
+With **Resolve-Unpkg**, you can automatically update the package versions that are mentioned in the unpkg URLs in some of your project files.
 
 > The package versions used are those installed in your local environment.
 
-To launch unpkg links update via CLI, run:
-
-`resolve-unpkg [optional-config.json]`
+Before you begin, prepare the resolve-unpkg configuration file to override the default options if necessary. For example:
 
 **Sample Resolve-Unpkg configuration file**
 
 ```
 {
   "unpkgPrefix": "/unpkg",
-  "files": ["index.vm", "index.ejs"],
+  "files": ["index.vm, index.ejs"],
   "dist": "dist/"
 }
 ```
 
-As a result, the unpkg URLs will be updated as illustrated in the example below.
+To launch the unpkg links update via command line, run:
 
-Let's consider the following file (`index.html`) :
+`resolve-unpkg [optional-config.json]`
+
+As a result, the unpkg URLs in the provided files will be updated.
+
+As an illustration to this process, let's consider the following file (`index.html`) :
 
 ```html
 <html>
