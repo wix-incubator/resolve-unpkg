@@ -2,6 +2,8 @@
     <img src="https://image.ibb.co/nR99Wy/svg_resolveunpkg_github.png"/>
 </p>
 
+[![Build Status](https://travis-ci.org/wix-incubator/resolve-unpkg.svg)](https://travis-ci.org/wix-incubator/resolve-unpkg) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and in JavaScript imports.
 
 > **TLDR** 
@@ -11,8 +13,6 @@ The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by pa
 > CLI `resolve-unpkg path-to-optional-config.json`
 >
 > JS `import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';`
-
-[![Build Status](https://travis-ci.org/wix-incubator/resolve-unpkg.svg)](https://travis-ci.org/wix-incubator/resolve-unpkg) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 <!-- TOC -->
 
