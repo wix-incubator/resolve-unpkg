@@ -44,11 +44,11 @@ To customize the default configuration, use the following options:
 
 | Property         | Type       | Required | Description                              | CLI | Loader |
 | ---------------- | ---------- | :------: | ---------------------------------------- | :-: | :----: |
-| `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg URLs (default: `'unpkg.com'`) | Yes | Yes |
-| `versionPlaceholder`| `string`   |   No     | A version number placeholder to be replaced when occurs in the position of package version (default: `'x.x.x'`).  | Yes | Yes |
-| `onlyByVersionPlaceholder`  | `boolean`   |   No     |  A flag that may limit the update to those URLs that contain the versionPlaceholder (e.g. x.x.x); when set to `true`, the exact package version numbers, like 1.9.1, are ignored (default: `true`).     | Yes | Yes |
-| `files`    | `string[]`   |   No     | Path to file(s) to update/resolve URLs in (default: `['index.html']`) | Yes | No |
-| `dist`    | `string`   |   No     | Folder where the updated file(s) should be saved (default: overwrite original) | Yes | No |
+| `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg URLs. Default: `'unpkg.com'` | Yes | Yes |
+| `versionPlaceholder`| `string`   |   No     | A version number placeholder to be replaced when occurs in the position of package version. Default: `'x.x.x'`  | Yes | Yes |
+| `onlyByVersionPlaceholder`  | `boolean`   |   No     |  A flag that may limit the update to those URLs that contain the versionPlaceholder (e.g. x.x.x); when set to `true`, the exact package version numbers, like 1.9.1, are ignored. Default: `true`     | Yes | Yes |
+| `files`    | `string[]`   |   No     | Path to file(s) to update/resolve URLs in. Default: `['index.html']` | Yes | No |
+| `dist`    | `string`   |   No     | Folder where the updated file(s) should be saved. Default: overwrite original | Yes | No |
 
 # Usage in CLI
 
