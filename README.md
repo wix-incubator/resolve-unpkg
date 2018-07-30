@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/wix-incubator/resolve-unpkg.svg)](https://travis-ci.org/wix-incubator/resolve-unpkg) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and in JavaScript imports.
+The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and as a webloader.
 
 **TLDR**
 
@@ -14,7 +14,7 @@ The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by pa
 >    resolve-unpkg path-to-optional-config.json
 > ```
 >
-> In JS code:
+> Webloader:
 > ```javascript
 >    import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';
 > ```
@@ -34,7 +34,7 @@ To add **Resolve-Unpkg**, in the project root folder run:
 
 `npm i --save-dev resolve-unpkg`
 
-This will add the **Resolve-Unpkg** as a dependency to the *package.json* and enable you to run resolve-unpkg command and use it with the Webpack loader.
+This will add **Resolve-Unpkg** as a dependency to the *package.json* enabling you to run the `resolve-unpkg` command manually and use resolve-unpkg as a webpack loader to resolve versions in URLs on loading.
 
 # Configuration
 
