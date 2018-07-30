@@ -68,7 +68,7 @@ Before you begin, prepare the resolve-unpkg configuration file to override the d
 }
 ```
 
-To launch the unpkg links update via command line, run:
+To update the unpkg links, run:
 
 `resolve-unpkg [optional-config.json]`
 
@@ -100,9 +100,11 @@ If the version of the `jquery` installed in the local environment is `'2.21'`, a
 </html>
 ```
 
+Note that as the `onlyByVersionPlaceholder` is `true` by default, the older version for *spectrum-colorpicker* was not modified. 
+
 # Usage in JS
 
-For the unpkg links that are loaded into your JS code from the JSON file, use **resolve-unpkg** loader to inject the updated versions into the URLs on loading. To do so, update the script import and provide the necessary values in the Resolve-Unpkg loader parameter:
+For the unpkg links that are imported into your JS code from the JSON file, use **resolve-unpkg** loader to inject the updated versions into the URLs. To do so, update the import and provide the necessary values as parameters:
 
 ```javscript
 ...
