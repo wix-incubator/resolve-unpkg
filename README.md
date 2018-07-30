@@ -6,13 +6,18 @@
 
 The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and in JavaScript imports.
 
-> **TLDR** 
+> **TLDR**
 >
-> `npm i --save-dev resolve-unpkg`
+> In CLI:
+> ```bash
+>    npm i --save-dev resolve-unpkg
+>    resolve-unpkg path-to-optional-config.json
+> ```
 >
-> CLI `resolve-unpkg path-to-optional-config.json`
->
-> JS `import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';`
+> In JS code:
+> ```javascript
+>    import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';
+> ```
 
 <!-- TOC -->
 
