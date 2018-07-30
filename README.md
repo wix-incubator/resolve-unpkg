@@ -30,11 +30,11 @@ The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by pa
 
 # Import
 
-To add **Resolve-Unpkg**, run in the project root folder:
+To add **Resolve-Unpkg**, in the project root folder run:
 
 `npm i --save-dev resolve-unpkg`
 
-This will add the **Resolve-Unpkg** as a dependency to the *package.json* and enable you to run resolve-unpkg command and us it with the Webpack loader.
+This will add the **Resolve-Unpkg** as a dependency to the *package.json* and enable you to run resolve-unpkg command and use it with the Webpack loader.
 
 # Configuration
 
