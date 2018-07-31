@@ -4,9 +4,9 @@
 
 [![Build Status](https://travis-ci.org/wix-incubator/resolve-unpkg.svg)](https://travis-ci.org/wix-incubator/resolve-unpkg) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and as a webloader.
+The **Resolve-Unpkg** library helps you to keep your unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and as a webloader.
 
-**TLDR**
+**TL;DR;**
 
 > In CLI:
 > ```bash
@@ -111,3 +111,7 @@ For the unpkg links that are imported into your JS code from the JSON file, use 
 import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';
 ...
 ``` 
+
+# Testing
+
+Make sure to test the new version since every time your links are updated you are getting code that has not yet run through your tests. So if for example you use `resolve-unpkg` in your build phase, you should have your code tested afterwards (e.g. in E2E tests).
