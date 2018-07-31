@@ -2,17 +2,80 @@
     <img src="https://image.ibb.co/nR99Wy/svg_resolveunpkg_github.png"/>
 </p>
 
-# resolve-unpkg
-> A library that enables you to keep your unpkg links up to date.
-
 [![Build Status](https://travis-ci.org/wix-incubator/resolve-unpkg.svg)](https://travis-ci.org/wix-incubator/resolve-unpkg) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-## Usage
-1. `npm i --save-dev resolve-unpkg`
-2. run `resolve-unpkg [optional-config.json]` to resolve all unpkg urls in `index.html`
+The **Resolve-Unpkg** library helps you to keep the unpkg links up to date by patching the unpkg URLs with the package version installed in your environment. The **Resolve-Unpkg** may be used in command line and as a webloader.
 
-**Example:**
-Given file `index.html`:
+**TLDR**
+
+> In CLI:
+> ```bash
+>    npm i --save-dev resolve-unpkg
+>    resolve-unpkg path-to-optional-config.json
+> ```
+>
+> Webloader:
+> ```javascript
+>    import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';
+> ```
+
+<!-- TOC -->
+
+- [Import](#import)
+- [Configuration](#configuration)
+- [Usage in CLI](#usage-in-cli)
+- [Usage in JS](#usage-in-js)
+
+<!-- /TOC -->
+
+# Import
+
+To add **Resolve-Unpkg** to the project, `cd` to the project root folder and run:
+
+`npm i --save-dev resolve-unpkg`
+
+This will add **Resolve-Unpkg** as a dependency to *package.json* enabling you to run the `resolve-unpkg` command manually and use resolve-unpkg as a webpack loader to resolve versions in unpkg URLs when they are imported from the JSON file.
+
+# Configuration
+
+By default, **Resolve-Unpkg** processes URLs with `unpkg.com` prefix in the *index.html* file and replaces the *x.x.x* version placeholders with the actual version of the packages that are installed in your local environment.
+
+To customize the default configuration, use the following options:
+
+| Property         | Type       | Required | Description                              | CLI | Loader |
+| ---------------- | ---------- | :------: | ---------------------------------------- | :-: | :----: |
+| `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg URLs. Default: `'unpkg.com'` | Yes | Yes |
+| `versionPlaceholder`| `string`   |   No     | A version number placeholder to be replaced when occurs in the position of package version. Default: `'x.x.x'`  | Yes | Yes |
+| `onlyByVersionPlaceholder`  | `boolean`   |   No     |  A flag that may limit the update to those URLs that contain the versionPlaceholder (e.g. x.x.x); when set to `true`, the exact package version numbers, like 1.9.1, are ignored. Default: `true`     | Yes | Yes |
+| `files`    | `string[]`   |   No     | Path to file(s) to update/resolve URLs in. Default: `['index.html']` | Yes | No |
+| `dist`    | `string`   |   No     | Folder where the updated file(s) should be saved. Default: overwrite original | Yes | No |
+
+# Usage in CLI
+
+With **Resolve-Unpkg**, you can automatically update the package versions that are mentioned in the unpkg URLs in some of your project files.
+
+> The package versions used are those installed in your local environment.
+
+Before you begin, prepare the resolve-unpkg configuration file to override the default options if necessary. For example:
+
+**Sample Resolve-Unpkg configuration file**
+
+```
+{
+  "unpkgPrefix": "/unpkg",
+  "files": ["index.vm, index.ejs"],
+  "dist": "dist/"
+}
+```
+
+To update the unpkg links, run:
+
+`resolve-unpkg [optional-config.json]`
+
+As a result, the unpkg URLs in the provided files will be updated.
+
+As an illustration to this process, let's consider the following file (`index.html`) :
+
 ```html
 <html>
     <head>
@@ -24,14 +87,12 @@ Given file `index.html`:
 </html>
 ``` 
 
-And the following package versions installed: `jquery: '2.2.1'`, `spectrum-colorpicker: '1.6.1'`
-
-The file will be overwritten and will result in this:
+If the version of the `jquery` installed in the local environment is `'2.21'`, and `spectrum-colorpicker` is `'1.6.1'`, and we run the `resolve-unpkg` with default configuration parameters, the original `index.html` file will be overwritten with this one:
 
 ```html
 <html>
     <head>
-        <link rel="stylesheet" href="https://unpkg.com/spectrum-colorpicker@1.6.1/spectrum.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectrum-colorpicker@1.6.0/spectrum.css">
     </head>
     <body>
         <script src="https://unpkg.com/jquery@2.2.1/dist/jquery.min.js"></script>
@@ -39,40 +100,14 @@ The file will be overwritten and will result in this:
 </html>
 ```
 
-### Webpack Loader
+Note that as the `onlyByVersionPlaceholder` is `true` by default, the older version for *spectrum-colorpicker* was not modified. 
 
-If your code contains a JSON file with the links to unpkg in it the json file can be loaded using the resolve-unpkg loader.
+# Usage in JS
 
-**Example:**
+For the unpkg links that are imported into your JS code from the JSON file, use **resolve-unpkg** loader to inject the updated versions into the URLs. To do so, update the import and provide the necessary values as parameters:
 
 ```javscript
 ...
-import scripts from '!resolve-unpkg?versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';
+import scripts from '!resolve-unpkg?unpkgPrefix=unpkg.com&versionPlaceholder=a.b.c&onlyByVersionPlaceholder=true!scripts.json';
 ...
-
 ``` 
-
-### Options:
-
-#### Loader
-
-The following options can be configured for the loader:
-
-| Property         | Type       | Required | Description                              | CLI | Loader |
-| ---------------- | ---------- | :------: | ---------------------------------------- | :-: | :----: |
-| `unpkgPrefix`    | `string`   |   No     | The prefix of the unpkg links (default: `'unpkg.com'`) | Yes | Yes |
-| `versionPlaceholder`| `string`   |   No     | A placeholder that will be replaced if present in place of version number (default: `'x.x.x'`) | Yes | Yes |
-| `onlyByVersionPlaceholder`  | `boolean`   |   Npo     |  If to ignore set version numbers (default: `true`)     | Yes | Yes |
-| `files`    | `string[]`   |   No     | Path to file to resolve on (default: `['index.html']`) | Yes | No |
-| `dist`    | `string`   |   No     | Folder to create/replace with result (default: overwrite original) | Yes | No |
-
-
-### Example config file
-```
-{
-  "unpkgPrefix": "/unpkg",
-  "files": ["index.vm", "index.ejs"],
-  "dist": "dist/"
-}
-```
-
