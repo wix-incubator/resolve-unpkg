@@ -62,7 +62,7 @@ Before you begin, prepare the resolve-unpkg configuration file to override the d
 
 ```
 {
-  "unpkgPrefix": "/unpkg",
+  "unpkgPrefix": "unpkg",
   "files": ["index.vm, index.ejs"],
   "dist": "dist/"
 }
