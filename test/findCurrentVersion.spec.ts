@@ -4,7 +4,7 @@ import {findCurrentVersion} from '../src/findCurrentVersion';
 
 describe('FindCurrentVersion', () => {
   const package1Name = 'package1';
-  const package1Version = '1.0.0';
+  const package1Version = '1.0.0-beta.3';
   const parent = '@nested';
   const package2Name = 'package2';
   const package2Version = '1.0.1';

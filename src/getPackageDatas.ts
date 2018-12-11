@@ -26,13 +26,13 @@ function getVersionRegex(onlyByVersionPlaceholder: boolean, versionPlaceholder: 
   const versionRegexes = [];
 
   if (!onlyByVersionPlaceholder) {
-    versionRegexes.push(`(?:[0-9]|\\.)+`);
+    // versions can come in many form - just grab anything until "/" or end of line
+    versionRegexes.push(`[^\\/\\s]+`);
   }
 
   if (versionPlaceholder) {
     versionRegexes.push(escapeRegExp(versionPlaceholder));
   }
-  const versionPlaceholderRegex = versionPlaceholder;
 
   return versionRegexes.join('|');
 }

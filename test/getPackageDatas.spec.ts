@@ -50,4 +50,20 @@ describe('getPackageDatas', () => {
 
     expect(result.length).to.equal(1);
   });
+
+  it('should work for pre-release versions', () => {
+    const package1 = 'package1';
+    const version1 = '1.1.1-alpha.1';
+    const package2 = 'package2';
+    const version2 = '1.1.2-beta-2';
+    const fileContent = `unpkg/${package1}@${version1}\nunpkg/${package2}@${version2}`;
+
+    const result = getPackageDatas({source: fileContent, unpkgPrefix: 'unpkg'});
+
+    expect(result.length).to.equal(2);
+    expect(result[0].packageName).to.equal(package1);
+    expect(result[0].version).to.equal(version1);
+    expect(result[1].packageName).to.equal(package2);
+    expect(result[1].version).to.equal(version2);
+  });
 });

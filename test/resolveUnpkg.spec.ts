@@ -31,11 +31,20 @@ describe('FindCurrentVersion', () => {
   const file5Contents = `unpkg/${package1Name}@{version}\nunpkg/${package1Name}@1.2.3`;
   const file5Version = 'x.y.z';
 
+  const package6Name = 'package6';
+  const file6Name = 'file6';
+  const file6Contents = `unpkg/${package6Name}@{version}`;
+  const file6Version = '1.0.6-beta.6';
+  const package6Version = '1.0.6-beta.7';
+
   beforeEach(() => {
     mock({
       node_modules: {
         [package1Name]: {
           'package.json': JSON.stringify({version: package1Version})
+        },
+        [package6Name]: {
+          'package.json': JSON.stringify({version: package6Version})
         },
         [parent]: {
           [package2Name]: {
@@ -47,7 +56,8 @@ describe('FindCurrentVersion', () => {
       [file2Name]: file2Contents.replace('{version}', file2Version),
       [file3Name]: file3Contents.replace('{version}', file3Version),
       [file4Name]: file3Contents.replace('{version}', file4Version),
-      [file5Name]: file5Contents.replace('{version}', file5Version)
+      [file5Name]: file5Contents.replace('{version}', file5Version),
+      [file6Name]: file6Contents.replace('{version}', file6Version)
     });
   });
 
@@ -58,7 +68,7 @@ describe('FindCurrentVersion', () => {
     expect(result).to.equal(file1Contents);
   });
 
-  it('should support file replacment (without dist)', () => {
+  it('should support file replacement (without dist)', () => {
     resolveUnpkgFromFS({files: [file2Name], unpkgPrefix: 'unpkg', onlyByVersionPlaceholder: false});
 
     const result = fs.readFileSync(file2Name, 'utf-8');
@@ -126,5 +136,12 @@ describe('FindCurrentVersion', () => {
 
     const result = fs.readFileSync(file5Name, 'utf-8');
     expect(result).to.equal(file5Contents.replace('{version}', package1Version));
+  });
+
+  it('should support pre-released packages', () => {
+    resolveUnpkgFromFS({files: [file6Name], unpkgPrefix: 'unpkg', onlyByVersionPlaceholder: false});
+
+    const result = fs.readFileSync(file6Name, 'utf-8');
+    expect(result).to.equal(file6Contents.replace('{version}', package6Version));
   });
 });
